@@ -9,5 +9,9 @@ services:
     network_mode: service:ximeraserver
   ximeraserver:
     image: registry.gitlab.kuleuven.be/wet/ximera/ximeradocker:2.3_b
+    volumes:
+      - ../server-js:/usr/var/server/public/javascripts
+      - ../server-views:/usr/var/server/views
+      - ../start.sh:/usr/var/server/start.sh
     ports:
-      - "2080:2000"          # Expose Ximera on port 2080
+      - "2000:2000"          # Expose Ximera on port 2080

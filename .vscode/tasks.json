@@ -64,6 +64,12 @@
             ],
         },
         {
+            "label": "Stop Ximera Server",
+            "args": [
+                "ximeraserver-stop"
+            ],
+        },
+        {
                 "label": "Preview in Simple Browser",
                 "command": "${input:openSimpleBrowser}",
         },

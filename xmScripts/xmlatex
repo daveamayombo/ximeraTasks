@@ -106,9 +106,16 @@ else
     fi
 
     if [[ "$1" == "ximeraserver" ]]
-    then    
+    then
         echo "Starting ximera $SERVER_NAME from $SERVER_IMAGE on port $SERVER_PORT"
-        docker run --rm --name $SERVER_NAME -p 2000:$SERVER_PORT $SERVER_IMAGE
+        docker run --rm --name $SERVER_NAME -p 2000:$SERVER_PORT -v ./server-js:/usr/var/server/public/javascripts -v ./server-views:/usr/var/server/views -v ./start.sh:/usr/var/server/start.sh $SERVER_IMAGE
+        exit
+    fi
+
+    if [[ "$1" == "ximeraserver-stop" ]]
+    then
+        echo "Stopping ximera $SERVER_NAME"
+        docker container stop $SERVER_NAME
         exit
     fi
 
